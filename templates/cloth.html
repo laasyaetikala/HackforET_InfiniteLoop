@@ -1,0 +1,32 @@
+{%extends 'layout.html'%}
+
+{%block body%}
+    
+    <div class="container1">
+        <div><h2><center>Cloth-Waste</center></h2></div><br>
+        <div class="row row-cols-1 row-cols-md-2 g-4 align-items-center">
+            <div class="col">
+            <div class="card">
+                <img src="../static/clothdonat.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                <h5 class="card-title">Drop at the nearest centre</h5>
+                <p class="card-text">Looking to drop the little electronics? Find the nearest drop point at your location and drop your e-waste</p>
+                <a href="clothLocations" class="btn btn-primary">Find centres</a>
+                </div>
+            </div>
+            </div>
+            <div class="col">
+            <div class="card">
+                <img src="../static/cloth.jpg" class="card-img-top" alt="">
+                <div class="card-body">
+                <h5 class="card-title">Schedule a pickup</h5>
+                <p class="card-text">Have waste of higher quantities? Schedule a pickup by our organizations and get the waste pickedup from your location!</p>
+                <a href="clothpickup" class="btn btn-primary">Cloth Pickup</a>
+                <br>If you are an NGO, please click here to see the pickup locations of the NGOs.
+                <a href="clothPLocations" class="">NGO Pickup</a>
+            </div>
+            </div>
+            </div>
+        </div>
+      </div>
+{%endblock%}

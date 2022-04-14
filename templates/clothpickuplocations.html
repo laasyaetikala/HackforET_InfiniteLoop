@@ -1,0 +1,39 @@
+{%extends 'layout.html'%}
+
+{%block body%}
+<!-- printing articles -->
+<h1>locations to be picked up</h1>
+<table class="table table-striped">
+<thead>
+<tr>
+<!-- <th>Name</th> -->
+<th>Address</th>
+<th>PhoneNo</th>
+<!-- <th>Items</th> -->
+<th>quality</th>
+<th>quantity</th>
+<th>state</th>
+<th>city</th>
+<th>pincode</th>
+
+</tr>
+</thead>
+{%for location in clothpickup%}
+<tr>
+<!-- <td>{{location.name}}</td> -->
+<td>{{location.address}}</td>
+<td>{{location.phoneno}}</td>
+<!-- <td>{{location.items.data}}</td> -->
+<td>{{location.quality}}</td>
+<td>{{location.quantity}}</td>
+
+<td>{{location.state}}</td>
+<td>{{location.city}}</td>
+<td>{{location.pincode}}</td>
+
+
+</tr>
+{%endfor%}
+</table>
+   
+{%endblock%}
