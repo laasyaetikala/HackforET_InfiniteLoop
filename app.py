@@ -137,6 +137,11 @@ def teambooking():
         return redirect('/teambooking')
     return render_template('teambooking.html',form=form)
 
+@app.route('/dashboard')
+def dashboard():
+    return render_template('dashboard.html')
+
+    
 @app.route('/foodwaste')
 def foodwaste():
     return render_template('foodwaste.html')
