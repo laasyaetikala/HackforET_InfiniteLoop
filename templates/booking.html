@@ -61,11 +61,19 @@
                 </select>
             </div>
             <div class="col-md-4">
-                <label for="inputLaundry" class="form-label">Want Laundry</label>
+                <label for="inputLaundry" class="form-label">Opt Laundry</label>
                 <select id="inputLaundry" name="laundry" class="form-select">
                 <option selected>Choose...</option>
                     <option value="H1">Yes</option>
                     <option value="H2">No</option>
+                </select>
+            </div>
+            <div class="col-md-4">
+                <label for="inputMess" class="form-label">Mess</label>
+                <select id="inputMess" name="mess" class="form-select">
+                <option selected>Choose...</option>
+                    <option value="veg">Veg</option>
+                    <option value="nonveg">Non-Veg</option>
                 </select>
             </div>
             <div class="col-12">
@@ -83,6 +91,10 @@
             <div class="col-md-4">
             <label for="inputnum" class="form-label">Phone no.</label>
             <input type="tel" name="phoneno" class="form-control" id="inputnum">
+            </div>
+            <div class="col-12">
+                <label for="inputComments" class="form-label">Preferences</label>
+                    <input type="text" name="comments" class="form-control" id="inputComments" placeholder="Eg. First floor, near balcony">
             </div>
             <div class="col-12">
             <button type="submit" class="btn btn-primary">Make payment</button>
