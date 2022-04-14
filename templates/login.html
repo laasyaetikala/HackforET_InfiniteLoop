@@ -14,16 +14,35 @@
         <div class="container-fluid h-custom">
           <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-md-9 col-lg-6 col-xl-5">
-              <img src="../static/wmimg.jpg"
-                class="img-fluid" alt="Sample image">
-            </div>
-            <div class="col-md-8 col-lg-6 col-xl-4 offset-xl-1">
               <form method="post">
-                <h2>Login</h2><br>
+                <h2>Login for Students</h2><br>
                 <!-- Email input -->
                 <div class="col-md-12">
-                  <label class="form-label">Email Address</label>
-                  <input type="email" name="username" class="form-control" placeholder="Enter a valid Email Address">
+                  <label class="form-label">Roll Number</label>
+                  <input type="text" name="username" class="form-control" placeholder="Enter a valid Roll Number">
+                </div>
+                <br>
+                <!-- Password input -->
+                <div class="col-md-12">
+                  <label class="form-label">Password</label>
+                  <input type="password" name="password" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="text-center text-lg-start mt-4 pt-2">
+                  <button type="submit" class="btn btn-primary btn-lg"
+                    style="padding-left: 2.5rem; padding-right: 2.5rem;">Login</button>
+                    <p class="small fw-bold mt-2 pt-1 mb-0">Don't have an account? <a href="/register"
+                      class="link-danger">Register</a></p>
+                </div>
+
+              </form>
+            </div>
+            <div class="col-md-9 col-lg-6 col-xl-5">
+              <form method="post">
+                <h2>Login for Hostel Owners</h2><br>
+                <!-- Email input -->
+                <div class="col-md-12">
+                  <label class="form-label">Identity Number</label>
+                  <input type="text" name="username" class="form-control" placeholder="Enter a valid Identity Number">
                 </div>
                 <br>
                 <!-- Password input -->
