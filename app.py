@@ -29,65 +29,6 @@ mysql=MySQL(app)
 def index():
     return render_template('index.html')
 
-@app.route('/ewaste')
-def ewaste():
-    return render_template('ewaste.html')
-
-@app.route('/cloth')
-def clothe():
-    return render_template('cloth.html')
-
-class clothPickupForm(Form):
-    address=StringField("address",[validators.Length(min=1,max=200)])
-    city=StringField("city",[validators.Length(min=1,max=200)])
-    state=StringField("state",[validators.Length(min=1,max=200)])
-    pincode=StringField("pincode",[validators.Length(min=1,max=200)])
-    phone=StringField("phone",[validators.Length(min=1,max=200)])
-    items=StringField("items",[validators.Length(min=1,max=200)])
-    quantity=StringField("quantity",[validators.Length(min=1,max=200)])
-    quality=StringField("quality",[validators.Length(min=1,max=200)])
-
-
-@app.route('/clothpickup',methods=['POST','GET'])#clothpickup.html
-def clothpickup():
-    form=clothPickupForm(request.form)
-    if request.method=='POST':
-        Address=form.address.data
-        Phone=form.phone.data
-        # PhotoImage=form.photo.data
-        items=form.items.data
-        quantity=form.quantity.data
-        quality=form.quality.data
-        state=form.state.data
-        city=form.city.data
-        pincode=form.pincode.data
-        #create cursor
-        cur=mysql.connection.cursor()
-        #execute
-        cur.execute("INSERT INTO clothpickup(address,phoneno,items,quantity,quality,state,city,pincode) VALUES(%s,%s,%s,%s,%s,%s,%s,%s)",(Address,Phone,items,quantity,quality,state,city,pincode))
-        print("insert into clothpickup")
-        #commit to DB
-        mysql.connection.commit()
-        print(Address)
-        #close connection
-        cur.close()
-        flash('Your request has been submitted','success')
-    else:
-        flash('Please fill the form correctly','danger')   
-    # return render_template('clothpickup.html',form=form)
-    return render_template('clothpickup.html')
-    
-@app.route('/ewasteloc')
-def ewasteloc():
-    cur = mysql.connection.cursor()
-    result = cur.execute("SELECT * FROM droppoints")
-    list = cur.fetchall()
-    if result > 0:
-        return render_template('ewasteloc.html', list=list)
-    else:
-        msg = 'No Items Found'
-        return render_template('ewasteloc.html', msg=msg)
-    cur.close()
 
 class bookingForm(Form):
     name=StringField('Name',[validators.Length(min=1)])
@@ -131,25 +72,22 @@ def booking():
         return redirect('/booking')
     return render_template('booking.html',form=form)
 
+class teambookingForm(Form):
+    rollno_1=StringField('RollNo_1',[validators.Length(min=1)])
+    rollno_2=StringField('RollNo_2',[validators.Length(min=1)])
+    rollno_3=StringField('RollNo_3',[validators.Length(min=1)])
+    rollno_4=StringField('RollNo_4',[validators.Length(min=1)])
+
 @app.route('/teambooking',methods=['GET','POST'])
 def teambooking():
     form=bookingForm(request.form)
     if request.method=='POST':
-        name=request.form['name']
-        rollno=request.form['rollno']
-        branch=request.form['branch']
-        year=request.form['year']
-        hostel=request.form['hostel']
-        roomtype=request.form['roomtype']
-        laundry=request.form['laundry']
-        mess=request.form['mess']
-        address=request.form['address']
-        city=request.form['city']
-        pincode=request.form['pincode']
-        phoneno=request.form['phoneno']
-        preferences=request.form['preferences']
+        rollno_1=request.form['rollno_1']
+        rollno_2=request.form['rollno_2']
+        rollno_3=request.form['rollno_3']
+        rollno_4=request.form['rollno_4']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
+        r=cur.execute("INSERT INTO teambooking(rollno_1,rollno_2,rollno_3,rollno_4) VALUES(%s,%s,%s,%s)",(rollno_1,rollno_2,rollno_3,rollno_4))
         print(r)
         mysql.connection.commit()
         #close connection 
@@ -195,39 +133,6 @@ def biogasloc():
 @app.route('/about')
 def about():
     return render_template('about.html')
-
-class FoodPickUpForm(Form):
-    #photo =FileField('Photo')
-    phoneno=StringField('Items',[validators.Length(min=10,max=10)])
-    items=SelectField('Phone No',choices=['Rice','Roti','Curry','Tiffins','Dal','Curd'])
-    quantity=StringField('Quantity')
-    address=StringField('Address',[validators.Length(min=1,max=70)])
-    state=StringField('State',[validators.Length(min=5,max=15)])
-    city=StringField('City',[validators.Length(max=15)])
-    pincode=StringField('Pincode',[validators.Length(max=6)])
-@app.route('/foodpickup',methods=['GET','POST'])
-def foodpickform():
-    form=FoodPickUpForm(request.form)
-    if request.method=='POST':
-        #photo=form.photo.data
-        phoneno=request.form['phoneno']
-        items=request.form['items']
-        quantity=request.form['quantity']
-        address=request.form['address']
-        state=request.form['state']
-        city=request.form['city']
-        pincode=request.form['pincode']
-        cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO foodpickup(phoneno,items,quantity,address,state,city,pincode) VALUES(%s,%s,%s,%s,%s,%s,%s)",(phoneno,items,quantity,address,state,city,pincode))
-        #print(r)
-        #commit to DB
-        mysql.connection.commit()
-        #close connection 
-        cur.close()
-        msg = 'Details Submitted'
-        return render_template('foodpickup.html', msg=msg)
-        #return redirect('/foodpickup')
-    return render_template('foodpickup.html',form=form)
 
 class Register(Form):
     username=StringField('Username',[validators.Length(min=5)])
