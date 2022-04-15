@@ -63,7 +63,7 @@ def booking():
         phoneno=request.form['phoneno']
         preferences=request.form['preferences']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO hostelbooking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
+        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
         print(r)
         mysql.connection.commit()
         #close connection 
@@ -115,7 +115,7 @@ def studentlogin():
 @app.route('/admin')
 def admin():
     cur=mysql.connection.cursor()
-    result=cur.execute("SELECT * FROM hostelbooking")
+    result=cur.execute("SELECT * FROM booking")
     list=cur.fetchall()
     if result > 0:
         return render_template('admin.html',list=list)
