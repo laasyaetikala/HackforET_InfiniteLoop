@@ -18,7 +18,7 @@ app=Flask(__name__)
 app.config['MYSQL_HOST']='localhost'
 app.config['MYSQL_USER']='root'
 app.config['MYSQL_PASSWORD']=''
-app.config['MYSQL_DB']='waste_management'
+app.config['MYSQL_DB']='hostel_booking'
 app.config['MYSQL_CURSORCLASS']='DictCursor'
 
 #init MySQL
@@ -63,7 +63,7 @@ def booking():
         phoneno=request.form['phoneno']
         preferences=request.form['preferences']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
+        r=cur.execute("INSERT INTO hostelbooking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
         print(r)
         mysql.connection.commit()
         #close connection 

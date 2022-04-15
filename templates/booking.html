@@ -13,14 +13,14 @@
 <body>
     <div class="container2">
         <div><h2><center>Booking form</center></h2></div><br>
-        <form method="post" action="/ewasteschedule" class="row g-3">
+        <form method="post" action="/booking" class="row g-3">
             <div class="col-md-6">
                 <label for="inputName" class="form-label">Name</label>
                 <input type="text" name="name" class="form-control" id="inputName">
             </div>
             <div class="col-md-6">
                 <label for="inputNo" class="form-label">Roll no.</label>
-                <input type="text" name="no" class="form-control" id="inputNo">
+                <input type="text" name="rollno" class="form-control" id="inputNo">
             </div>
             <div class="col-md-4">
                 <label for="inputBranch" class="form-label">Branch</label>
@@ -55,7 +55,7 @@
             </div>
             <div class="col-md-4">
                 <label for="inputType" class="form-label">Room type</label>
-                <select id="inputType" name="type" class="form-select">
+                <select id="inputType" name="roomtype" class="form-select">
                 <option selected>Choose...</option>
                     <option value="H1">AC</option>
                     <option value="H2">Non-AC</option>
@@ -95,7 +95,7 @@
             </div>
             <div class="col-12">
                 <label for="inputComments" class="form-label">Preferences</label>
-                    <input type="text" name="comments" class="form-control" id="inputComments" placeholder="Eg. First floor, near balcony">
+                    <input type="text" name="preferences" class="form-control" id="inputComments" placeholder="Eg. First floor, near balcony">
             </div>
             <div class="col-12">
             <button type="submit" class="btn btn-primary">Make payment</button>
