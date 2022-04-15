@@ -63,7 +63,7 @@ def booking():
         phoneno=request.form['phoneno']
         preferences=request.form['preferences']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
+        r=cur.execute("INSERT INTO hostelbooking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
         print(r)
         mysql.connection.commit()
         #close connection 
@@ -111,6 +111,31 @@ def hostel3():
 @app.route('/studentlogin')
 def studentlogin():
     return render_template('studentlogin.html')
+
+@app.route('/admin')
+def admin():
+    cur=mysql.connection.cursor()
+    result=cur.execute("SELECT * FROM hostelbooking")
+    list=cur.fetchall()
+    if result > 0:
+        return render_template('admin.html',list=list)
+    else:
+        msg='No Items Found'
+        return render_template('admin.html',msg=msg)
+    cur.close()
+
+
+@app.route('/biogasloc')
+def biogasloc():
+    cur=mysql.connection.cursor()
+    result=cur.execute("SELECT * FROM biogas")
+    list=cur.fetchall()
+    if result > 0:
+        return render_template('biogasloc.html',list=list)
+    else:
+        msg='No Items Found'
+        return render_template('biogasloc.html',msg=msg)
+    cur.close()
 
 @app.route('/about')
 def about():

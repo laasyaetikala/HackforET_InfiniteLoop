@@ -20,7 +20,8 @@
                 <th><h3>Year</h3></th>
                 <th><h3>Hostel</h3></th>
                 <th><h3>Room type</h3></th>
-                <th><h3>Prefernces</h3></th>
+                <th><h3>Preferences</h3></th>
+                <th><h3>Action</h3></th>
             </tr>
                 {%for i in list%}
                 <tr>
@@ -30,6 +31,8 @@
                     <td>{{i.hostel}}</td>
                     <td>{{i.room}}</td>
                     <td>{{i.preferences}}</td>
+                    <td><button type="submit" class="btn btn-success"><a href="/accepted" style="color: aliceblue;">Accept</a></button></td>
+                    <td><button type="submit" class="btn btn-danger"><a href="/rejected" style="color: aliceblue;">Reject</a></button></td>
                 </tr>
                 {%endfor%}
         </table>
