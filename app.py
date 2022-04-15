@@ -167,6 +167,19 @@ def dashboard():
 def studentlogin():
     return render_template('studentlogin.html')
 
+@app.route('/admin')
+def admin():
+    cur=mysql.connection.cursor()
+    result=cur.execute("SELECT * FROM hostelbooking")
+    list=cur.fetchall()
+    if result > 0:
+        return render_template('admin.html',list=list)
+    else:
+        msg='No Items Found'
+        return render_template('admin.html',msg=msg)
+    cur.close()
+
+
 @app.route('/biogasloc')
 def biogasloc():
     cur=mysql.connection.cursor()
