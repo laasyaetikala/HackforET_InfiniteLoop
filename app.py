@@ -96,10 +96,17 @@ def teambooking():
         return redirect('/teambooking')
     return render_template('teambooking.html',form=form)
 
-@app.route('/dashboard')
-def dashboard():
-    return render_template('dashboard.html')
+@app.route('/hostel1')
+def hostel1():
+    return render_template('hostel1.html')
 
+@app.route('/hostel2')
+def hostel2():
+    return render_template('hostel2.html')
+
+@app.route('/hostel3')
+def hostel3():
+    return render_template('hostel3.html')
     
 @app.route('/studentlogin')
 def studentlogin():
