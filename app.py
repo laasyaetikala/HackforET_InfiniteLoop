@@ -142,9 +142,9 @@ def dashboard():
     return render_template('dashboard.html')
 
     
-@app.route('/foodwaste')
-def foodwaste():
-    return render_template('foodwaste.html')
+@app.route('/studentlogin')
+def studentlogin():
+    return render_template('studentlogin.html')
 
 @app.route('/biogasloc')
 def biogasloc():
