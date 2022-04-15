@@ -1,5 +1,5 @@
 
-The waste management Portal
+The hostel booking Portal
 
 Technologies used:
 Backend - Flask
