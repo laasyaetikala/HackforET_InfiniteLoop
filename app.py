@@ -90,25 +90,39 @@ def ewasteloc():
     cur.close()
 
 class bookingForm(Form):
+    name=StringField('Name',[validators.Length(min=1)])
+    rollno=StringField('Roll No',[validators.Length(min=10,max=10)])
+    branch=StringField('Branch',[validators.Length(min=1)])
+    year=StringField('Year',[validators.Length(min=1)])
+    hostel=StringField('Hostel',[validators.Length(min=1)])
+    roomtype=StringField('Room Type',[validators.Length(min=1)])
+    laundry=StringField('Laundry',[validators.Length(min=1)])
+    mess=StringField('Mess',[validators.Length(min=1)])
     phoneno=StringField('Items',[validators.Length(min=10,max=10)])
-    quantity=StringField('Quantity')
     address=StringField('Address',[validators.Length(min=1,max=70)])
-    state=StringField('State',[validators.Length(min=5,max=15)])
     city=StringField('City',[validators.Length(max=15)])
     pincode=StringField('Pincode',[validators.Length(max=6)])
+    preferences=StringField('Preferences',[validators.Length(min=1)])
 
 @app.route('/booking',methods=['GET','POST'])
 def booking():
     form=bookingForm(request.form)
     if request.method=='POST':
-        phoneno=request.form['phoneno']
-        quantity=request.form['quantity']
+        name=request.form['name']
+        rollno=request.form['rollno']
+        branch=request.form['branch']
+        year=request.form['year']
+        hostel=request.form['hostel']
+        roomtype=request.form['roomtype']
+        laundry=request.form['laundry']
+        mess=request.form['mess']
         address=request.form['address']
-        state=request.form['state']
         city=request.form['city']
         pincode=request.form['pincode']
+        phoneno=request.form['phoneno']
+        preferences=request.form['preferences']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO ewastepickup(phoneno,quantity,address,state,city,pincode) VALUES(%s,%s,%s,%s,%s,%s)",(phoneno,quantity,address,state,city,pincode))
+        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
         print(r)
         mysql.connection.commit()
         #close connection 
@@ -121,14 +135,21 @@ def booking():
 def teambooking():
     form=bookingForm(request.form)
     if request.method=='POST':
-        phoneno=request.form['phoneno']
-        quantity=request.form['quantity']
+        name=request.form['name']
+        rollno=request.form['rollno']
+        branch=request.form['branch']
+        year=request.form['year']
+        hostel=request.form['hostel']
+        roomtype=request.form['roomtype']
+        laundry=request.form['laundry']
+        mess=request.form['mess']
         address=request.form['address']
-        state=request.form['state']
         city=request.form['city']
         pincode=request.form['pincode']
+        phoneno=request.form['phoneno']
+        preferences=request.form['preferences']
         cur=mysql.connection.cursor()
-        r=cur.execute("INSERT INTO ewastepickup(phoneno,quantity,address,state,city,pincode) VALUES(%s,%s,%s,%s,%s,%s)",(phoneno,quantity,address,state,city,pincode))
+        r=cur.execute("INSERT INTO booking(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences) VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)",(name,rollno,branch,year,hostel,roomtype,laundry,mess,phoneno,address,city,pincode,preferences))
         print(r)
         mysql.connection.commit()
         #close connection 
